@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,8 +30,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Load environment variables from .env file
 
+PROJECT_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dotenv_path = os.path.join(PROJECT_BASE_DIR, 'env', 'key.env')
+load_dotenv(dotenv_path)
+API_KEY = os.getenv('API_KEY')
+
+
+# Application definition
 INSTALLED_APPS = [
     'weather_app',
     'corsheaders',
@@ -42,7 +51,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # CORS middleware must be placed at the top
+    'corsheaders.middleware.CorsMiddleware',  # CORS middleware
     'django.middleware.csrf.CsrfViewMiddleware',  # CSRF middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,13 +59,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'weather_app.middleware.DailyAggregateMiddleware' # Daily weather data Aggregate middleware
 ]
 
-
-# settings.py
-
 CORS_ALLOW_CREDENTIALS = True  # Allow credentials (cookies) to be sent
-CORS_ALLOW_ALL_ORIGINS = True  # Set to False and specify allowed origins explicitly
+# CORS_ALLOW_ALL_ORIGINS = False # Set to False and specify allowed origins explicitly
 CORS_ALLOWED_ORIGINS = ['http://192.168.1.2:8080', 'http://localhost:8080', 'http://localhost:8000']
 
 CSRF_TRUSTED_ORIGINS = [

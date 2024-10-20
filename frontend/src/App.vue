@@ -7,7 +7,8 @@
     </header>
     <main>
       <WeatherData />
-      <!-- <WeatherVisuals /> -->
+      <WeatherVisuals />
+      <WeatherTrends />
       <WeatherAlerts />
     </main>
   </div>
@@ -16,14 +17,16 @@
 <script>
 import WeatherData from './components/WeatherData.vue';
 import WeatherAlerts from "./components/WeatherAlerts.vue";
-// import WeatherVisuals from "./components/WeatherVisuals.vue";
+import WeatherVisuals from "./components/WeatherVisuals.vue";
+import WeatherTrends from "./components/WeatherTrends.vue";
 
 export default {
   name: 'App',
   components: {
     WeatherData,
-    // WeatherVisuals,
-    WeatherAlerts
+    WeatherVisuals,
+    WeatherAlerts,
+    WeatherTrends
   },
 };
 </script>

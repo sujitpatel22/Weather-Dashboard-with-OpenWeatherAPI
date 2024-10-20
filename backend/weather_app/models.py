@@ -1,8 +1,5 @@
 # models.py
-
 from django.db import models
-from django.contrib.auth.models import User
-
 
 class WeatherData(models.Model):
     main_condition = models.CharField(max_length=50, null=True)
@@ -39,17 +36,17 @@ class City(models.Model):
 class AggregationStatus(models.Model):
     last_aggregated_date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Last aggregation date: {self.last_aggregated_date}"
+
 
 class WeatherAlertThreshold(models.Model):
     city = models.CharField(max_length=100)
-    temp_threshold = models.FloatField(
-        null=True, blank=True)  # Temperature threshold
-    wind_speed_threshold = models.FloatField(
-        null=True, blank=True)  # Wind speed threshold
-    humidity_threshold = models.IntegerField(
-        null=True, blank=True)  # Humidity threshold
-    consecutive_updates = models.IntegerField(
-        default=2)  # Default to 2 consecutive updates
+    temp_threshold = models.FloatField(null=True, blank=True)
+    wind_speed_threshold = models.FloatField(null=True, blank=True)
+    humidity_threshold = models.IntegerField(null=True, blank=True)
+    consecutive_updates = models.IntegerField(default=2)
 
     def __str__(self):
         return f"Thresholds for {self.city}"
+
