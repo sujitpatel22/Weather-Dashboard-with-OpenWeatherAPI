@@ -37,7 +37,7 @@ Before you begin, ensure you have the following installed:
 
 1. Open your terminal or command prompt.
 2. Clone the repository using the following command:
-   -git clone https://github.com/yourusername/your-repository-name.git
+   -git clone https://github.com/sujitpatel22/Weather-Dashboard-with-OpenWeatherAPI.git
    
 ### Setup_Virtual_Environment
 - It’s a good practice to use a virtual environment. Create one using: `python -m venv venv`.
