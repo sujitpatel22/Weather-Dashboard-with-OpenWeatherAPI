@@ -19,8 +19,47 @@ The Weather Trends Application allows users to fetch and display weather data fo
 - **Database**: django-SQLite
 - **Environment Management**: Django-environ, python-dotenv
 
-# API Endpoints
+# Installation
 
+Follow the instructions below to set up the project locally.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Python** (version 3.6 or higher)
+- **Pip** (Python package installer)
+- **Django** (latest version)
+- **Docker** (optional, for containerized deployment)
+- **Docker Compose** (optional, if using Docker)
+
+### Clone the Repository
+
+1. Open your terminal or command prompt.
+2. Clone the repository using the following command:
+   -git clone https://github.com/yourusername/your-repository-name.git
+   
+### Setup_Virtual_Environment
+- It’s a good practice to use a virtual environment. Create one using: `python -m venv venv`.
+- Activate it using ` source venv\Scripts\activate`
+
+### Install_Dependencies
+-With the virtual environment activated, install the required packages: `pip install -r requirements.txt`.
+
+### Configure_Environment_Variables
+- Create a `.env` file in `project_dir/env/env_file`. Use it to store API_KEY.
+- load it using python-dotenv.
+
+### Run_Migrations
+- Run the following command to apply the database migrations:
+- `python manage.py makemigrations`
+- `python manage.py migrate`
+
+# Running the project
+- To start the backend server, navigate to your Django project directory and run the following command: `python manage.py runserver`.
+- Navigate to the Frontend Directory. Open another terminal window or tab, and run the following command: `npm run serve`.
+
+# API Endpoints
 ### Weather Data
 
 - **GET** `/weather/` - Fetches weather data for predefined cities.
